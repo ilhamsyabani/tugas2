@@ -24,7 +24,7 @@ export default function Fibonacci() {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-50">
                     Jumlah Bilangan Fibonacci
                 </h2>
             }
@@ -34,7 +34,7 @@ export default function Fibonacci() {
             <div className="p-8">
                 <form onSubmit={handleSubmit} className="mb-6">
                     <div className="mb-4">
-                        <label htmlFor="n1" className="block mb-1">Bilangan Fibonacci ke-n1:</label>
+                        <label htmlFor="n1" className="block mb-1 dark:text-gray-50">Bilangan Fibonacci ke-n1:</label>
                         <input
                             type="number"
                             id="n1"
@@ -65,8 +65,8 @@ export default function Fibonacci() {
 
                 {result !== null && (
                     <div>
-                        <h3 className="text-lg font-semibold dark:text-white">Hasil:</h3>
-                        <p className='dark:text-white'>Fb({n1}) + Fb({n2}) = {result}</p>
+                        <h3 className="text-lg font-semibold dark:text-gray-50">Hasil:</h3>
+                        <p className='dark:text-gray-50'>Fb({n1}) + Fb({n2}) = {result}</p>
                     </div>
                 )}
             </div>

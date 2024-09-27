@@ -119,9 +119,9 @@ export default function Rekap({ rekaps, categories }) {
                 </table>
 
                 {/* Pagination */}
-                <div className="flex justify-between items-center mt-4 dark:text-gray-200">
+                <div className="flex justify-between items-center mt-4">
                     <div>
-                        <span>Jumlah per halaman: </span>
+                        <span className='dark:text-gray-200'>Jumlah per halaman: </span>
                         <select value={perPage} onChange={(e) => setPerPage(parseInt(e.target.value))} className="border p-2 w-16">
                             <option value="5">5</option>
                             <option value="10">10</option>

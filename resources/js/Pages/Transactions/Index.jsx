@@ -54,9 +54,9 @@ export default function Index({ transactions, categories }) {
 
             <div className="p-8">
                 <div className='flex justify-between items-center mb-6'>
-                    <button onClick={resetFilters} className="bg-blue-500 text-white px-4 py-2 rounded">
+                    <Link href="/transaction/create" className="bg-blue-500 text-white px-4 py-2 rounded">
                         Tambah Transaksi
-                    </button>
+                    </Link>
                     <div className="mb-4 flex justify-end gap-4">
                         <button onClick={resetFilters} className="bg-red-500 text-white px-4 py-2 rounded">
                             Reset Filter
@@ -158,9 +158,9 @@ export default function Index({ transactions, categories }) {
                 </table>
 
                 {/* Pagination */}
-                <div className="flex justify-between items-center mt-4 dark:text-gray-200">
+                <div className="flex justify-between items-center mt-4 ">
                     <div>
-                        <span>Jumlah per halaman: </span>
+                        <span className='dark:text-gray-200'>Jumlah per halaman: </span>
                         <select value={perPage} onChange={(e) => setPerPage(parseInt(e.target.value))} className="border p-2 w-16">
                             <option value="5">5</option>
                             <option value="10">10</option>
@@ -174,7 +174,7 @@ export default function Index({ transactions, categories }) {
                             className="px-4 py-2 border bg-gray-200">
                             Previous
                         </button>
-                        <span className="px-4">{currentPage} / {totalPages}</span>
+                        <span className="px-4 dark:text-gray-200">{currentPage} / {totalPages}</span>
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
