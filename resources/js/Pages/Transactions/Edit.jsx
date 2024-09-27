@@ -40,7 +40,7 @@ export default function Edit({ transaction, categoriesItems, categoriesdata }) {
             <Head title="Edit Data Transaksi" />
 
             <div className="py-12 px-8 ">
-                <form onSubmit={handleSubmit} className="p-6 p-6 bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-50 rounded-md shadow-md w-full">
+                <form onSubmit={handleSubmit} className="p-6 bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-50 rounded-md shadow-md w-full">
                     <div className="flex w-full gap-8 items-end mb-6">
                         <div className="flex-1 mr-4">
                             <label htmlFor="description" className="block text-sm font-medium text-gray-800 dark:text-gray-50">Deskripsi Transaksi</label>
