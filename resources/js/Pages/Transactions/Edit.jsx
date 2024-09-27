@@ -39,8 +39,8 @@ export default function Edit({ transaction, categoriesItems, categoriesdata }) {
         >
             <Head title="Edit Data Transaksi" />
 
-            <div className="py-12 px-8">
-                <form onSubmit={handleSubmit} className="p-6p-6 bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-50 rounded-md shadow-md w-full">
+            <div className="py-12 px-8 ">
+                <form onSubmit={handleSubmit} className="p-6 p-6 bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-50 rounded-md shadow-md w-full">
                     <div className="flex w-full gap-8 items-end mb-6">
                         <div className="flex-1 mr-4">
                             <label htmlFor="description" className="block text-sm font-medium text-gray-800 dark:text-gray-50">Deskripsi Transaksi</label>
@@ -58,26 +58,48 @@ export default function Edit({ transaction, categoriesItems, categoriesdata }) {
 
                         <div className="flex-1">
                             <div className="flex flex-col space-y-1">
-                                {[
-                                    { label: 'Code', type: 'text', name: 'code', value: data.code },
-                                    { label: 'Rate Euro', type: 'number', name: 'rate_euro', value: data.rate_euro, step: '0.01' },
-                                    { label: 'Tanggal Pembayaran', type: 'date', name: 'date_paid', value: data.date_paid },
-                                ].map(({ label, type, name, value, step }) => (
-                                    <div className="flex items-center space-x-4" key={name}>
-                                        <label htmlFor={name} className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">{label}</label>
-                                        <input
-                                            type={type}
-                                            step={step}
-                                            id={name}
-                                            name={name}
-                                            value={value}
-                                            onChange={(e) => setData(name, e.target.value)}
-                                            className="mt-1 block w-full p-2 border border-gray-300 text-gray-800 rounded-md"
-                                            required
-                                        />
-                                        {errors[name] && <div className="text-red-500">{errors[name]}</div>}
-                                    </div>
-                                ))}
+                                <div className="flex items-center space-x-4">
+                                    <label htmlFor="code" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Code</label>
+                                    <input
+                                        type="text"
+                                        id="code"
+                                        name="code"
+                                        value={data.code}
+                                        onChange={(e) => setData('code', e.target.value)}
+                                        className="mt-1 block w-full p-2 border border-gray-300 text-gray-800 rounded-md"
+                                        required
+                                    />
+                                    {errors.code && <div className="text-red-500">{errors.code}</div>}
+                                </div>
+
+                                <div className="flex items-center space-x-4">
+                                    <label htmlFor="rate_euro" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Rate Euro</label>
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        id="rate_euro"
+                                        name="rate_euro"
+                                        value={data.rate_euro}
+                                        onChange={(e) => setData('rate_euro', e.target.value)}
+                                        className="mt-1 block w-full p-2 border border-gray-300 text-gray-800 rounded-md"
+                                        required
+                                    />
+                                    {errors.rate_euro && <div className="text-red-500">{errors.rate_euro}</div>}
+                                </div>
+
+                                <div className="flex items-center space-x-4">
+                                    <label htmlFor="date_paid" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Tanggal Pembayaran</label>
+                                    <input
+                                        type="date"
+                                        id="date_paid"
+                                        name="date_paid"
+                                        value={data.date_paid}
+                                        onChange={(e) => setData('date_paid', e.target.value)}
+                                        className="mt-1 block w-full p-2 border border-gray-300 text-gray-800 rounded-md"
+                                        required
+                                    />
+                                    {errors.date_paid && <div className="text-red-500">{errors.date_paid}</div>}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -77,7 +77,7 @@ export default function Create({ categoriesdata }) {
                             <textarea
                                 id="description"
                                 name="description"
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                 value={data.description}
                                 onChange={(e) => setData('description', e.target.value)}
                                 rows={5}
@@ -96,7 +96,7 @@ export default function Create({ categoriesdata }) {
                                         name="code"
                                         value={data.code}
                                         onChange={(e) => setData('code', e.target.value)}
-                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                        className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                         required
                                     />
                                     {errors.code && <div className="text-red-500">{errors.code}</div>}
@@ -111,7 +111,7 @@ export default function Create({ categoriesdata }) {
                                         name="rate_euro"
                                         value={data.rate_euro}
                                         onChange={(e) => setData('rate_euro', e.target.value)}
-                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                        className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                         required
                                     />
                                     {errors.rate_euro && <div className="text-red-500">{errors.rate_euro}</div>}
@@ -125,7 +125,7 @@ export default function Create({ categoriesdata }) {
                                         name="date_paid"
                                         value={data.date_paid}
                                         onChange={(e) => setData('date_paid', e.target.value)}
-                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                        className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                         required
                                     />
                                     {errors.date_paid && <div className="text-red-500">{errors.date_paid}</div>}
@@ -141,14 +141,14 @@ export default function Create({ categoriesdata }) {
                                     <div className="flex gap-4 items-center mb-4">
                                         <label htmlFor={`category-${categoryIndex}`} className="block text-sm font-medium text-gray-800 dark:text-gray-50">Kategori Transaksi</label>
                                         <select
-                                            className="border p-2 w-[200px] rounded-md border-gray-300"
+                                            className="border p-2 w-[200px] rounded-md border-gray-300 text-gray-800 bg-slate-200"
                                             id={`category-${categoryIndex}`}
                                             value={category.category}
                                             onChange={(e) => handleCategoryChange(categoryIndex, e)}
                                         >
                                             <option value="">Semua Kategori</option>
                                             {categoriesdata.map((cat) => (
-                                                <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                                <option key={cat.id} value={cat.id} className='text-gray-800 bg-slate-200'>{cat.name}</option>
                                             ))}
                                         </select>
                                     </div>
@@ -173,7 +173,7 @@ export default function Create({ categoriesdata }) {
                                                 name="name"
                                                 value={detail.name}
                                                 onChange={(e) => handleDetailChange(categoryIndex, detailIndex, e)}
-                                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                                className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                                 required
                                             />
                                         </div>
@@ -186,7 +186,7 @@ export default function Create({ categoriesdata }) {
                                                 name="value_idr"
                                                 value={detail.value_idr}
                                                 onChange={(e) => handleDetailChange(categoryIndex, detailIndex, e)}
-                                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                                className="mt-1 block w-full p-2 border text-gray-800 bg-slate-200 border-gray-300 rounded-md"
                                                 required
                                             />
                                         </div>
