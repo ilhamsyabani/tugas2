@@ -158,7 +158,7 @@ export default function Index({ transactions, categories }) {
                 </table>
 
                 {/* Pagination */}
-                <div className="flex justify-between items-center mt-4">
+                <div className="flex justify-between items-center mt-4 dark:text-gray-200">
                     <div>
                         <span>Jumlah per halaman: </span>
                         <select value={perPage} onChange={(e) => setPerPage(parseInt(e.target.value))} className="border p-2 w-16">

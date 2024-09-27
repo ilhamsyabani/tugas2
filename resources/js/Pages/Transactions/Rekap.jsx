@@ -119,7 +119,7 @@ export default function Rekap({ rekaps, categories }) {
                 </table>
 
                 {/* Pagination */}
-                <div className="flex justify-between items-center mt-4">
+                <div className="flex justify-between items-center mt-4 dark:text-gray-200">
                     <div>
                         <span>Jumlah per halaman: </span>
                         <select value={perPage} onChange={(e) => setPerPage(parseInt(e.target.value))} className="border p-2 w-16">
@@ -135,7 +135,7 @@ export default function Rekap({ rekaps, categories }) {
                             className="px-4 py-2 border bg-gray-200">
                             Previous
                         </button>
-                        <span className="px-4">{currentPage} / {totalPages}</span>
+                        <span className="px-4 dark:text-gray-200">{currentPage} / {totalPages}</span>
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}

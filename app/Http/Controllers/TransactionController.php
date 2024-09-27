@@ -161,10 +161,10 @@ class TransactionController extends Controller
             'categories.*.details.*.value_idr.numeric' => 'Nilai (IDR) harus berupa angka.',
         ]);
     
-        // Temukan data berdasarkan ID
+        
         $transactionData = TransactionHeader::findOrFail($transaction);
         
-        // Update data
+       
         $transactionData->update([
             'description' => $validatedData['description'],
             'code' => $validatedData['code'],
@@ -172,7 +172,7 @@ class TransactionController extends Controller
             'date_paid' => $validatedData['date_paid'],
         ]);
     
-        // Update kategori dan detail (misalnya, simpan dalam relasi)
+        
         foreach ($validatedData['categories'] as $categoryData) {
             // Misalkan ada relasi categories
             $category = $transactionData->categories()->updateOrCreate(
@@ -180,7 +180,7 @@ class TransactionController extends Controller
                 []
             );
     
-            // Mengupdate detail kategori
+            
             foreach ($categoryData['details'] as $detail) {
                 $category->details()->updateOrCreate(
                     ['name' => $detail['name']],

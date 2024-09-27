@@ -45,7 +45,7 @@ export default function Fibonacci() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="n2" className="block mb-1">Bilangan Fibonacci ke-n2:</label>
+                        <label htmlFor="n2" className="block mb-1 dark:text-white">Bilangan Fibonacci ke-n2:</label>
                         <input
                             type="number"
                             id="n2"
@@ -65,8 +65,8 @@ export default function Fibonacci() {
 
                 {result !== null && (
                     <div>
-                        <h3 className="text-lg font-semibold">Hasil:</h3>
-                        <p>Fb({n1}) + Fb({n2}) = {result}</p>
+                        <h3 className="text-lg font-semibold dark:text-white">Hasil:</h3>
+                        <p className='dark:text-white'>Fb({n1}) + Fb({n2}) = {result}</p>
                     </div>
                 )}
             </div>
