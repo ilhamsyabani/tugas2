@@ -14,7 +14,7 @@ export default function Authenticated({ header, children }) {
 
     return (
         <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-            <aside className="w-64 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <aside className="w-30 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-4">
                     <Link href="/" className="flex items-center mb-6">
                         <ApplicationLogo className="h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />

@@ -69,11 +69,11 @@ export default function Create({ categoriesdata }) {
             <Head title="Tambah Data" />
 
             <div className="py-12 px-8">
-                <form onSubmit={handleSubmit} className="p-6 bg-white rounded-md shadow-md w-full">
+                <form onSubmit={handleSubmit} className="p-6 bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-50 rounded-md shadow-md w-full">
 
                     <div className="flex w-full gap-8 items-end mb-6">
                         <div className="flex-1 mr-4">
-                            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Deskripsi Transaksi</label>
+                            <label htmlFor="description" className="block text-sm font-medium text-gray-800 dark:text-gray-50">Deskripsi Transaksi</label>
                             <textarea
                                 id="description"
                                 name="description"
@@ -89,7 +89,7 @@ export default function Create({ categoriesdata }) {
                         <div className="flex-1">
                             <div className="flex flex-col space-y-1">
                                 <div className="flex items-center space-x-4">
-                                    <label htmlFor="code" className="block text-sm font-medium text-gray-700 w-[200px]">Code</label>
+                                    <label htmlFor="code" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Code</label>
                                     <input
                                         type="text"
                                         id="code"
@@ -103,7 +103,7 @@ export default function Create({ categoriesdata }) {
                                 </div>
 
                                 <div className="flex items-center space-x-4">
-                                    <label htmlFor="rate_euro" className="block text-sm font-medium text-gray-700 w-[200px]">Rate Euro</label>
+                                    <label htmlFor="rate_euro" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Rate Euro</label>
                                     <input
                                         type="number"
                                         step="0.01"
@@ -118,7 +118,7 @@ export default function Create({ categoriesdata }) {
                                 </div>
 
                                 <div className="flex items-center space-x-4">
-                                    <label htmlFor="date_paid" className="block text-sm font-medium text-gray-700 w-[200px]">Tanggal Pembayaran</label>
+                                    <label htmlFor="date_paid" className="block text-sm font-medium text-gray-800 dark:text-gray-50 w-[200px]">Tanggal Pembayaran</label>
                                     <input
                                         type="date"
                                         id="date_paid"
@@ -139,7 +139,7 @@ export default function Create({ categoriesdata }) {
                             <div key={categoryIndex} className="mb-6 p-4 border rounded-md shadow-md">
                                 <div className='flex justify-between'>
                                     <div className="flex gap-4 items-center mb-4">
-                                        <label htmlFor={`category-${categoryIndex}`} className="block text-sm font-medium text-gray-700">Kategori Transaksi</label>
+                                        <label htmlFor={`category-${categoryIndex}`} className="block text-sm font-medium text-gray-800 dark:text-gray-50">Kategori Transaksi</label>
                                         <select
                                             className="border p-2 w-[200px] rounded-md border-gray-300"
                                             id={`category-${categoryIndex}`}
@@ -156,7 +156,7 @@ export default function Create({ categoriesdata }) {
                                         <button
                                             type="button"
                                             onClick={() => addDetail(categoryIndex)}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                                            className="border-2 border-gray-800 dark:border-gray-50 text-gray-900 dark:text-white font-semibold px-4 py-2 rounded hover:bg-gray-800 hover:text-white  hover:dark:bg-gray-50 hover:dark:text-gray-900 "
                                         >
                                             Tambah Detail
                                         </button>
@@ -166,7 +166,7 @@ export default function Create({ categoriesdata }) {
                                 {category.details.map((detail, detailIndex) => (
                                     <div key={detailIndex} className="flex gap-4 items-end">
                                         <div className='flex-1'>
-                                            <label htmlFor={`name-${categoryIndex}-${detailIndex}`} className="block text-sm font-medium text-gray-700">Nama</label>
+                                            <label htmlFor={`name-${categoryIndex}-${detailIndex}`} className="block text-sm font-medium text-gray-800 dark:text-gray-50">Nama</label>
                                             <input
                                                 type="text"
                                                 id={`name-${categoryIndex}-${detailIndex}`}
@@ -179,7 +179,7 @@ export default function Create({ categoriesdata }) {
                                         </div>
 
                                         <div>
-                                            <label htmlFor={`value_idr-${categoryIndex}-${detailIndex}`} className="block text-sm font-medium text-gray-700">Nilai (IDR)</label>
+                                            <label htmlFor={`value_idr-${categoryIndex}-${detailIndex}`} className="block text-sm font-medium text-gray-800 dark:text-gray-50">Nilai (IDR)</label>
                                             <input
                                                 type="number"
                                                 id={`value_idr-${categoryIndex}-${detailIndex}`}
@@ -215,11 +215,11 @@ export default function Create({ categoriesdata }) {
                         <button
                             type="button"
                             onClick={addCategory}
-                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                            className="border-2 border-gray-800 dark:border-gray-50 text-gray-900 dark:text-white font-semibold px-4 py-2 rounded  hover:bg-gray-800 hover:text-white  hover:dark:bg-gray-50 hover:dark:text-gray-900"
                         >
                             Tambah Kategori Transaksi
                         </button>
-                        <button type="submit" className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600" disabled={processing}>
+                        <button type="submit" className="bg-gray-900 text-white dark:bg-slate-100 dark:text-slate-900 font-semibold px-6 py-2 rounded hover:dark:bg-gray-900 hover:dark:text-white  hover:bg-gray-50 hover:text-gray-900" disabled={processing}>
                             Simpan Transaksi
                         </button>
                     </div>

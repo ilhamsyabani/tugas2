@@ -69,7 +69,7 @@ export default function Category  ({ categories }) {
                         className="border p-2 mr-2"
                         required
                     />
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                    <button type="submit" className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-4 py-2 rounded">
                         {editCategory ? 'Update Kategori' : 'Tambah Kategori'}
                     </button>
                     {editCategory && (
@@ -79,21 +79,22 @@ export default function Category  ({ categories }) {
                     )}
                 </form>
 
-                <table className="min-w-full text-sm text-center rounded-xl bg-white">
-                    <thead>
+                <div class="shadow overflow-hidden sm:rounded-lg">
+                <table className="min-w-full text-sm bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+                    <thead className="bg-gray-200 dark:bg-gray-700 text-xs uppercase font-medium p-4">
                         <tr>
-                            <th className="border-b p-2">No</th>
-                            <th className="border-b p-2">Nama Kategori</th>
-                            <th className="border-b p-2">Aksi</th>
+                            <th className="px-6 py-3 text-center tracking-wider">No</th>
+                            <th className="px-6 py-3 text-center tracking-wider">Nama Kategori</th>
+                            <th className="px-6 py-3 text-center tracking-wider">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         {categoryList.length > 0 ? (
                             categoryList.map((category, index) => (
                                 <tr key={category.id}>
-                                    <td className="border-b p-2">{index + 1}</td>
-                                    <td className="border-b p-2">{category.name}</td>
-                                    <td className="border-b p-2">
+                                    <td className="px-6 py-3 text-center tracking-wider">{index + 1}</td>
+                                    <td className=" text-center px-6 py-4">{category.name}</td>
+                                    <td className=" text-center px-6 py-4">
                                         <button onClick={() => handleEdit(category)} className="bg-yellow-500 text-white px-2 py-1 rounded mr-2">
                                             Edit
                                         </button>
@@ -110,6 +111,7 @@ export default function Category  ({ categories }) {
                         )}
                     </tbody>
                 </table>
+                </div>
             </div>
         </AuthenticatedLayout>
     );

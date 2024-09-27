@@ -117,16 +117,23 @@ class TransactionController extends Controller
         $header = $transaction->header;
         $details = $header->details()->with('category')->get();
 
-        $groupedDetails = $details->groupBy(function($detail) {
-            return $detail->category->name; 
+        $groupedDetails = $details->groupBy(function ($detail) {
+            return $detail->category->name;
         });
+
+        $groupedDetailsArray = $groupedDetails->map(function ($details, $categoryName) {
+            return [
+                'category' => $categoryName,
+                'items' => $details
+            ];
+        })->values()->toArray();
 
         $transactionData = TransactionDetail::with(['header', 'category'])->findOrFail($transaction->id);
 
         return inertia('Transactions/Edit', [
             'transaction' => $transactionData,
             'categoriesdata' =>  $categories,
-            'categoriesItems' => $groupedDetails
+            'categoriesItems' => $groupedDetailsArray
         ]);
     }
 
@@ -141,55 +148,45 @@ class TransactionController extends Controller
             'rate_euro' => 'required|numeric',
             'date_paid' => 'required|date',
             'categories' => 'required|array',
-            'categories.*.category' => 'required',
-            'categories.*.details' => 'required|array',
-            'categories.*.details.*.name' => 'required|string',
-            'categories.*.details.*.value_idr' => 'required|numeric',
-        ], [
-            'description.required' => 'Deskripsi Transaksi harus diisi.',
-            'code.required' => 'Code harus diisi.',
-            'rate_euro.required' => 'Rate Euro harus diisi.',
-            'date_paid.required' => 'Tanggal Pembayaran harus diisi.',
-            'categories.required' => 'Kategori harus diisi.',
-            'categories.array' => 'Kategori harus berupa array.',
-            'categories.*.category_id.required' => 'ID Kategori Transaksi harus diisi.',
-            'categories.*.category_id.exists' => 'ID Kategori Transaksi tidak ditemukan.',
-            'categories.*.details.required' => 'Detail Transaksi harus diisi.',
-            'categories.*.details.array' => 'Detail harus berupa array.',
-            'categories.*.details.*.name.required' => 'Nama detail harus diisi.',
-            'categories.*.details.*.value_idr.required' => 'Nilai (IDR) harus diisi.',
-            'categories.*.details.*.value_idr.numeric' => 'Nilai (IDR) harus berupa angka.',
-        ]);
-    
-        
-        $transactionData = TransactionHeader::findOrFail($transaction);
-        
-       
+            'category' => 'required',
+            'name' => 'required|string',
+            'value_idr' => 'required|numeric',
+        ],);
+
+        $transactionHeaderId = $transaction->header->id; // Adjust based on your actual structure
+        $transactionData = TransactionHeader::findOrFail($transactionHeaderId);
+
+
         $transactionData->update([
             'description' => $validatedData['description'],
             'code' => $validatedData['code'],
             'rate_euro' => $validatedData['rate_euro'],
             'date_paid' => $validatedData['date_paid'],
         ]);
-    
-        
-        foreach ($validatedData['categories'] as $categoryData) {
-            // Misalkan ada relasi categories
-            $category = $transactionData->categories()->updateOrCreate(
-                ['name' => $categoryData['category']],
-                []
-            );
-    
-            
-            foreach ($categoryData['details'] as $detail) {
-                $category->details()->updateOrCreate(
-                    ['name' => $detail['name']],
-                    ['value_idr' => $detail['value_idr']]
-                );
-            }
-        }
-    
-        return redirect()->route('data.index')->with('success', 'Data updated successfully.');
+
+        $categoryId = $validatedData['category']['id'];
+        $transaction->update([
+            'transaction_category_id' => $categoryId,
+            'name' => $validatedData['name'],
+            'value_idr' => $validatedData['value_idr'],
+        ]);
+ 
+
+        // foreach ($validatedData['categories'] as $categoryData) {
+        //     $category = $transactionData->categories()->updateOrCreate(
+        //         ['name' => $categoryData['category']],
+        //         []
+        //     );
+
+        //     foreach ($categoryData['details'] as $detail) {
+        //         $category->details()->updateOrCreate(
+        //             ['name' => $detail['name']],
+        //             ['value_idr' => $detail['value_idr']]
+        //         );
+        //     }
+        // }
+
+        return redirect()->route('transaction.index')->with('success', 'Data updated successfully.');
     }
 
     /**
